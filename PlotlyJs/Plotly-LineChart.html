@@ -1,52 +1,34 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <title>Plotly Line Chart</title>
     <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
     <script src="lodash.js"></script>
     <script>
+      window.onload = plotGraph();
       async function plotGraph() {
         const apiUrl =
-          "https://mocki.io/v1/fd9b88cd-6df4-4a4b-a51d-3a6314631140";
+          "https://mocki.io/v1/31599c37-66ca-4011-a77d-38f373057c06";
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log(data);
-        const countries = _.map(data, "country");
+        const date = _.map(data, "date");
         const profits = _.map(data, "profit");
         const stores = _.map(data, "stores");
         const chartElement = document.getElementById("chart");
         const config = {
           responsive: true,
-          displaylogo: false,
-          modeBarButtonsToRemove: [
-            "2D",
-            "pan2d",
-            "select2d",
-            "lasso2d",
-            "zoomIn2d",
-            "zoomOut2d",
-            "autoScale2d",
-            "resetScale2d",
-            "Other",
-            "hoverClosestGl2d",
-            "hoverClosestPie",
-            "toggleHover",
-            "resetViews",
-            "sendDataToCloud",
-            "toggleSpikelines",
-            "resetViewMapbox",
-            "Cartesian",
-            "hoverClosestCartesian",
-            "hoverCompareCartesian",
-          ],
+          displayModeBar: false,
         };
         const traces = [];
         const trace = {
-          x: countries,
+          x: date,
           y: profits,
           name: "Profit",
           type: "scatter",
         };
         const trace2 = {
-          x: countries,
+          x: date,
           y: stores,
           name: "Stores",
           type: "scatter",
@@ -64,7 +46,7 @@
             b: 75,
           },
           xaxis: {
-            title: "Country",
+            title: "Date",
             autorange: true,
             showgrid: false,
             showline: false,
@@ -76,7 +58,6 @@
           },
           yaxis2: {
             title: "Stores",
-            anchor: "x",
             overlaying: "y",
             showline: false,
             showgrid: false,
@@ -96,6 +77,5 @@
   </head>
   <body>
     <div id="chart" style="width: 600px; height: 250px"></div>
-    <button onclick="plotGraph()">Plot Graph</button>
   </body>
 </html>
