@@ -1,0 +1,52 @@
+[
+  {
+    "country": "Germany",
+    "profit": 31102,
+    "stores": 850
+  },
+  {
+    "country": "Vietnam",
+    "profit": 63924,
+    "stores": 810
+  },
+  {
+    "country": "Pakistan",
+    "profit": 38144,
+    "stores": 343
+  },
+  {
+    "country": "Italy",
+    "profit": 43991,
+    "stores": 537
+  },
+  {
+    "country": "Mexico",
+    "profit": 43781,
+    "stores": 386
+  },
+  {
+    "country": "France",
+    "profit": 46242,
+    "stores": 301
+  },
+  {
+    "country": "United States",
+    "profit": 73986,
+    "stores": 193
+  },
+  {
+    "country": "Netherlands",
+    "profit": 86522,
+    "stores": 470
+  },
+  {
+    "country": "South Korea",
+    "profit": 34534,
+    "stores": 380
+  },
+  {
+    "country": "India",
+    "profit": 42001,
+    "stores": 503
+  }
+]

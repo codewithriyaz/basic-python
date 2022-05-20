@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+    <script src="lodash.js"></script>
+    <script>
+      async function plotGraph() {
+        const apiUrl =
+          "https://mocki.io/v1/fd9b88cd-6df4-4a4b-a51d-3a6314631140";
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        console.log(data);
+        const countries = _.map(data, "country");
+        const profits = _.map(data, "profit");
+        const stores = _.map(data, "stores");
+        const chartElement = document.getElementById("chart");
+        const config = {
+          responsive: true,
+          displaylogo: false,
+          modeBarButtonsToRemove: [
+            "2D",
+            "pan2d",
+            "select2d",
+            "lasso2d",
+            "zoomIn2d",
+            "zoomOut2d",
+            "autoScale2d",
+            "resetScale2d",
+            "Other",
+            "hoverClosestGl2d",
+            "hoverClosestPie",
+            "toggleHover",
+            "resetViews",
+            "sendDataToCloud",
+            "toggleSpikelines",
+            "resetViewMapbox",
+            "Cartesian",
+            "hoverClosestCartesian",
+            "hoverCompareCartesian",
+          ],
+        };
+        const traces = [];
+        const trace = {
+          x: countries,
+          y: profits,
+          name: "Profit",
+          type: "scatter",
+        };
+        const trace2 = {
+          x: countries,
+          y: stores,
+          name: "Stores",
+          type: "scatter",
+          yaxis: "y2",
+        };
+        traces.push(trace);
+        traces.push(trace2);
+        const layout = {
+          showlegend: true,
+          width: 850,
+          height: 500,
+          margin: {
+            t: 10,
+            r: 10,
+            b: 75,
+          },
+          xaxis: {
+            title: "Country",
+            autorange: true,
+            showgrid: false,
+            showline: false,
+          },
+          yaxis: {
+            title: "Profit",
+            showline: true,
+            showgrid: true,
+          },
+          yaxis2: {
+            title: "Stores",
+            anchor: "x",
+            overlaying: "y",
+            showline: false,
+            showgrid: false,
+            side: "right",
+          },
+          colorway: [
+            "#1f77b4", // blue
+            "#d62728", // brick red
+            "#ff7f0e", // orange,
+            "#006400 ", // dark green
+            "#e377c2", // pink
+          ],
+        };
+        Plotly.newPlot(chartElement, traces, layout, config);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart" style="width: 600px; height: 250px"></div>
+    <button onclick="plotGraph()">Plot Graph</button>
+  </body>
+</html>
