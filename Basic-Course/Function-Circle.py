@@ -1,4 +1,3 @@
-# Start Code Here
 from turtle import *
 turtle = Turtle()
 def drawCircle (size,color,angle):
@@ -12,3 +11,4 @@ drawCircle(100,'blue',80)
 drawCircle(100,'green',100)
 drawCircle(100,'yellow',40)
 drawCircle(100,'cyan',50)
+drawCircle(50,'pink',20)
